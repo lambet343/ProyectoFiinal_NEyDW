@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}  <!-- Cargar archivos estáticos de Django -->
+    <meta charset="UTF-8">  <!-- Definir la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Configuración para una mejor visualización en dispositivos móviles -->
+    <title>PartyPack</title>  <!-- Título de la página -->
+    
+    <!-- Importar Bootstrap desde un CDN para estilo rápido y responsive -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Importar el archivo de estilo personalizado (style.css) desde la carpeta estática -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Barra de navegación (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Enlace de la marca (PartyPack) que redirige al catálogo de productos -->
+        <a class="navbar-brand" href="{% url 'mostrar_producto' %}">PartyPack</a>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"> <!-- Lista de navegación alineada a la derecha -->
+                
+                <!-- Verifica si el usuario está autenticado -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenido, {{ user.username }}</span>  <!-- Muestra el nombre de usuario si está logueado -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>  <!-- Enlace para cerrar sesión -->
+                    </li>
+                {% else %}
+                    <!-- Si el usuario no está autenticado, muestra los enlaces para iniciar sesión o registrarse -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registrar_usuario' %}">Registrarse</a>
+                    </li>
+                {% endif %}
+                
+                <!-- Enlaces para ver el carrito y el resumen de la compra -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ver_carrito' %}">Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'resumen_compra' %}">Resumen de compra</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mostrar mensajes de éxito o error en la página -->
+    {% if messages %}
+        <div class="container mt-3">
+            <div class="alert alert-info">
+                {% for message in messages %}
+                    <p>{{ message }}</p>  <!-- Mostrar los mensajes, por ejemplo, éxito o error -->
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Contenido específico de cada página se inserta aquí -->
+    <div class="container">
+        {% block content %}  <!-- Contenido específico de cada vista se coloca en este bloque -->
+        {% endblock %}
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2024 PartyPack - Todos los derechos reservados</span>  <!-- Información del copyright -->
+            
+            <!-- Enlaces a redes sociales (Facebook, Twitter, Instagram) -->
+            <div class="social-links mt-3">
+                <a href="https://www.facebook.com/TuPagina" target="_blank">Facebook</a> |
+                <a href="https://www.twitter.com/TuCuenta" target="_blank">Twitter</a> |
+                <a href="https://www.instagram.com/TuCuenta" target="_blank">Instagram</a> |
+                <a href="{% url 'contacto' %}">Contáctanos</a>  <!-- Enlace al formulario de contacto -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts necesarios para el funcionamiento de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  <!-- jQuery (necesario para Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>  <!-- Popper.js (necesario para algunos componentes de Bootstrap) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  <!-- Bootstrap JS -->
+</body>
+</html>

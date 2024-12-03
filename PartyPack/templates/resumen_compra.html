@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Título de la página "Resumen de tu compra" -->
+<h1>Resumen de tu compra</h1>
+
+<!-- Lista de productos en el carrito con nombre, precio y cantidad -->
+<ul>
+    {% for item in productos %}
+        <li>
+            <!-- Mostrar el nombre del producto, su precio y la cantidad seleccionada -->
+            {{ item.producto.nombre }} - ${{ item.producto.precio }} x {{ item.cantidad }}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Mostrar el total de la compra -->
+<p>Total: ${{ total }}</p>
+
+<!-- Formulario para confirmar la compra -->
+<form method="POST" action="{% url 'confirmar_compra' %}">
+    <!-- Protección CSRF para evitar ataques CSRF -->
+    {% csrf_token %}
+    
+    <!-- Botón para confirmar la compra -->
+    <button type="submit">Confirmar Compra</button>
+</form>
+
+{% endblock %}

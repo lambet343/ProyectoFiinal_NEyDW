@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Catálogo de Productos</h1>
+
+<!-- Contenedor de búsqueda con separación -->
+<div class="search-container">
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="{% url 'mostrar_producto' %}">
+        <!-- Campo para buscar productos por nombre -->
+        <input type="text" name="q" placeholder="Buscar productos..." value="{{ query }}">
+
+        <!-- Filtro por categoría -->
+        <select name="categoria">
+            <option value="">Filtrar por categoría</option>
+            <!-- Categoría "Consumibles" seleccionada si coincide con el valor de categoría en el filtro -->
+            <option value="Consumibles" {% if categoria == 'Consumibles' %}selected{% endif %}>Consumibles</option>
+            <!-- Categoría "Paquetes" seleccionada si coincide con el valor de categoría en el filtro -->
+            <option value="Paquetes" {% if categoria == 'Paquetes' %}selected{% endif %}>Paquetes</option>
+            <!-- Categoría "Otros" seleccionada si coincide con el valor de categoría en el filtro -->
+            <option value="Multimedia" {% if categoria == 'Multimedia' %}selected{% endif %}>Multimedia</option>
+            <!-- Categoría "Otros" seleccionada si coincide con el valor de categoría en el filtro -->
+            <option value="Otros" {% if categoria == 'Otros' %}selected{% endif %}>Otros</option>
+        </select>
+
+        <!-- Filtro por precio (mínimo y máximo) -->
+        <input type="number" name="precio_min" placeholder="Precio mínimo" value="{{ precio_min }}">
+        <input type="number" name="precio_max" placeholder="Precio máximo" value="{{ precio_max }}">
+
+        <!-- Botón para realizar la búsqueda -->
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+
+<!-- Contenedor de productos -->
+<div class="row">
+    {% for producto in productos %}
+        <!-- Cada producto se muestra en una tarjeta (card) con una imagen, nombre, descripción, precio y un botón de acción -->
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                {% if producto.imagen %}
+                    <!-- Mostrar la imagen del producto si está disponible -->
+                    <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                {% endif %}
+                <div class="card-body">
+                    <!-- Nombre del producto -->
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <!-- Descripción corta del producto -->
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <!-- Precio del producto -->
+                    <p><strong>Precio: ${{ producto.precio }}</strong></p>
+                    <p>
+                        <!-- Mensaje si el stock del producto es bajo -->
+                        {% if producto.stock < 10 %}
+                            <span class="text-danger">Poca disponibilidad</span>
+                        {% endif %}
+                    </p>
+
+                    <!-- Formulario para seleccionar la cantidad -->
+                    <form method="POST" action="{% url 'agregar_al_carrito' producto.id %}">
+                        {% csrf_token %}
+                        <div class="form-group d-flex">
+                            <!-- Campo de entrada para la cantidad (tamaño reducido) -->
+                            <input type="number" name="cantidad" id="cantidad" class="form-control mr-2" value="1" min="1" max="{{ producto.stock }}" style="width: 30%;">
+                            <!-- Botón para agregar al carrito (en el mismo contenedor que la cantidad) -->
+                            <button type="submit" class="btn btn-primary" style="width: 70%;">Agregar al Carrito</button>
+                        </div>
+                    </form>
+
+                    <!-- Botón para comparar el producto con otros -->
+                    <button class="btn btn-secondary mt-3">
+                        <a href="{% url 'comparar' producto.id %}" style="color: white; text-decoration: none;">Comparar</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

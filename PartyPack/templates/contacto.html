@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Título de la página "Contáctanos" -->
+<h1>Contáctanos</h1>
+
+<!-- Formulario para enviar un mensaje de contacto -->
+<form method="POST">
+    <!-- Protección CSRF para evitar ataques CSRF -->
+    {% csrf_token %}
+    
+    <!-- Mostrar el formulario en formato de párrafo (as_p) -->
+    {{ form.as_p }}
+    
+    <!-- Botón para enviar el mensaje -->
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% endblock %}
