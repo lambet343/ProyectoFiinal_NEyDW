@@ -1,0 +1,338 @@
+/* Incluir la fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;700&display=swap'); /* Fuente para títulos */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); /* Fuente para el cuerpo de la página */
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap'); /* Fuente personalizada para el logo */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap'); /* Fuente para la barra de navegación */
+
+/* Cambiar la fuente del título y agregar margen superior */
+h1 {
+    font-family: 'Parkinsans', sans-serif; /* Fuente personalizada para el título */
+    margin-top: 40px; /* Añadir más espacio arriba del título */
+    font-size: 2.5rem; /* Ajustar el tamaño del texto del título */
+    font-weight: bold; /* Hacer el texto en negrita */
+    text-align: center; /* Centrar el título */
+}
+
+/* Personalizar la barra de navegación */
+.navbar {
+    background-color: #f5f5f5; /* Gris claro para el fondo de la barra */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para la barra */
+    font-family: 'Nunito', monospace; /* Fuente para la barra de navegación */
+}
+
+.navbar-brand {
+    font-family: 'Honk', sans-serif; /* Fuente personalizada para el nombre de la empresa */
+    font-size: 2.2rem; /* Ajustar tamaño del texto */
+    font-weight: bold; /* Negrita */
+    color: white; /* Color blanco para el texto */
+}
+
+.nav-link {
+    font-size: 1.2rem; /* Tamaño de fuente de los enlaces */
+    color: white; /* Color blanco para los enlaces */
+}
+
+.nav-link:hover {
+    color: #ddd; /* Color más claro cuando el enlace está en hover */
+}
+
+/* Estilo para los botones */
+.btn-primary {
+    background-color: #007bff; /* Color azul para el botón */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cambiar color cuando pasa el mouse */
+    transition: background-color 0.3s; /* Efecto de transición suave */
+}
+
+/* Estilo para botones secundarios */
+.btn-secondary {
+    background-color: #6c757d; /* Color gris para el botón secundario */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6368; /* Color más oscuro al pasar el mouse */
+    transition: background-color 0.3s;
+}
+
+/* Estilo para las tarjetas de productos */
+.card {
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: transform 0.3s ease; /* Efecto de movimiento al pasar el mouse */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Movimiento hacia arriba al pasar el mouse */
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0; /* Bordes redondeados para la imagen */
+}
+
+.card-body {
+    text-align: center; /* Centrar el texto dentro de las tarjetas */
+    padding: 20px; /* Espaciado interno */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Tamaño de fuente del título del producto */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilo para los formularios */
+form {
+    background-color: #f9f9f9; /* Fondo gris claro */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 30px; /* Espacio superior */
+}
+
+form input,
+form textarea {
+    width: 100%; /* Asegurarse de que los campos de texto llenen todo el ancho */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Bordes delgados y grises */
+    margin-bottom: 15px; /* Espacio debajo de los campos */
+}
+
+form button {
+    background-color: #4CAF50; /* Color verde para el botón */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+form button:hover {
+    background-color: #45a049; /* Cambiar color al pasar el mouse */
+    transition: background-color 0.3s;
+}
+
+/* Estilo para la barra de búsqueda */
+.search-container {
+    margin-bottom: 30px; /* Espacio debajo del formulario de búsqueda */
+    text-align: center; /* Centrar la barra */
+}
+
+.search-container input {
+    width: 25%; /* Reducir el tamaño de la barra de búsqueda */
+    padding: 8px;
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.search-container button {
+    padding: 8px 15px; /* Tamaño del botón */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-container button:hover {
+    background-color: #45a049; /* Cambio de color al pasar el mouse */
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el formulario de cantidad, el botón "Actualizar Cantidad" y el botón "Eliminar" */
+.form-group {
+    display: flex; /* Usamos flexbox para alinear los elementos */
+    justify-content: start; /* Alinea los elementos al inicio */
+    align-items: self-start; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.form-group input {
+    width: 8%; /* Reducir el tamaño del campo de cantidad */
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center; /* Centrar el texto */
+}
+
+.form-group button {
+    width: 16%; /* Ajustar el tamaño de los botones */
+    padding: 8px 10px;
+    background-color: #20B2AA; /* Aguamarina oscuro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-group button:hover {
+    background-color: white;
+    color: #20B2AA;
+    border: 1px solid #20B2AA;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el botón Eliminar */
+.btn-danger {
+    width: 10%; /* Ajustar el tamaño del botón Eliminar */
+    background-color: #dc3545; /* Rojo para Eliminar */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+}
+
+.btn-danger:hover {
+    background-color: white;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el botón Proceder con el pedido */
+.btn-success {
+    background-color: #28a745; /* Verde para Proceder */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-success:hover {
+    background-color: white;
+    color: #28a745;
+    border: 1px solid #28a745;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el pie de página */
+.footer {
+    background-color: #333; /* Color oscuro para el pie de página */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #ddd; /* Enlaces con color claro */
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    color: white; /* Color blanco al pasar el mouse */
+}
+
+/* Cambiar la fuente del cuerpo de la página */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilo para la barra de búsqueda */
+.search-container {
+    margin-bottom: 30px; /* Añadir espacio debajo del formulario de búsqueda */
+    text-align: center; /* Centrar el contenido dentro de la barra de búsqueda */
+}
+
+/* Estilo para los campos de entrada, el selector y el botón de búsqueda */
+.search-container input,
+.search-container select,
+.search-container button {
+    margin: 5px 10px; /* Añadir espacio alrededor de los elementos */
+}
+
+/* Estilo para el campo de entrada de búsqueda */
+.search-container input {
+    width: 25%; /* Reducir el tamaño de la barra de búsqueda */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+    text-align: center; /* Centrar el texto dentro del campo */
+}
+
+/* Estilo para el filtro de categoría (select) */
+.search-container select {
+    width: 20%; /* Hacer que el filtro de categoría sea más pequeño */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+    text-align: center; /* Centrar el texto dentro del selector */
+}
+
+/* Estilo para los filtros de precio (números) */
+.search-container input[type="number"] {
+    width: 20%; /* Hacer que el filtro de precio sea más pequeño */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde gris claro */
+    text-align: center; /* Centrar el texto dentro del campo */
+}
+
+/* Estilo para el botón de búsqueda */
+.search-container button {
+    padding: 8px 15px; /* Espaciado interno */
+    background-color: #4CAF50; /* Color verde para el botón */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto hover para el botón de búsqueda */
+.search-container button:hover {
+    background-color: #45a049; /* Cambiar color a verde más oscuro al pasar el mouse */
+    transition: background-color 0.3s; /* Suavizar la transición del color */
+}
+
+/* Estilo para el botón "Filtrar por categoría" */
+.search-container select {
+    font-family: sans-serif; /* Establecer fuente sans-serif */
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+    color: #333; /* Color gris oscuro para el texto */
+    background-color: #f8f9fa; /* Fondo gris claro para el selector */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo cuando el campo de selección está en foco (seleccionado) */
+.search-container select:focus {
+    border-color: #4CAF50; /* Cambiar el borde a verde al hacer foco */
+    outline: none; /* Eliminar el contorno por defecto */
+}
+
+/* Estilo para los botones "Agregar al Carrito" y "Comparar" */
+.btn-primary, .btn-secondary {
+    font-family: 'Sans-serif', sans-serif; /* Fuente sans-serif para los botones */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Centrar el texto dentro del botón */
+    font-weight: bold; /* Negrita en el texto del botón */
+}
+
+/* Estilo para el botón "Agregar al Carrito" */
+.btn-primary {
+    background-color: #20B2AA; /* Color aguamarina oscuro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+}
+
+/* Efecto hover para el botón "Agregar al Carrito" */
+.btn-primary:hover {
+    background-color: white; /* Cambiar fondo a blanco al pasar el mouse */
+    color: #20B2AA; /* Cambiar color del texto a aguamarina */
+    border: 1px solid #20B2AA; /* Borde aguamarina */
+    transition: all 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Estilo para el botón Comparar */
+.btn-secondary {
+    background-color: #8B008B; /* Tono oscuro de magenta */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    font-family: 'Sans-serif', sans-serif; /* Fuente sans-serif */
+    font-weight: bold; /* Negrita */
+}
